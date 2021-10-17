@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h2>Add a new project</h2>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.name.label(class="form-label") }}
+
+            {% if form.name.errors %}
+                {{ form.name(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.name.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.name(class="form-control") }}
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.description.label(class="form-label") }}
+
+            {% if form.description.errors %}
+                {{ form.description(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.description.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.description(class="form-control") }}
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.github_repo.label(class="form-label") }}
+
+            {% if form.github_repo.errors %}
+                {{ form.github_repo(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.github_repo.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.github_repo(class="form-control") }}
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.deadline.label(class="form-label") }}
+
+            {% if form.deadline.errors %}
+                {{ form.deadline(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.deadline.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.deadline(class="form-control") }}
+            {% endif %}
+        </div>
+
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+{% endblock content %}
