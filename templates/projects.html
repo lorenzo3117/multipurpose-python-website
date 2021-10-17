@@ -1,0 +1,29 @@
+<h2>Projects</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Github repository</th>
+            <th>Deadline</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if posts %}
+            {% for project in projects %}
+                <tr>
+                    <td>{{ project.id }}</td>
+                    <td>{{ project.name }}</td>
+                    <td>{{ project.description }}</td>
+                    <td><a href="{{ project.github_repo }}">Link to the repository -></a></td>
+                    <td>{{ project.deadline }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5">No projects added yet</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
