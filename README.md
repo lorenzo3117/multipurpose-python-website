@@ -13,9 +13,11 @@ py index.py
 ```
 
 ### TODO
-- Better home page
+- Use a real database instead of a DB class
+- Use decorators for generating a password
 - Copy to clipboard for generated password
 - Add detail page for a project
+- Better home page
 
 ### Sources
 https://www.geeksforgeeks.org/visualize-graphs-in-python/
