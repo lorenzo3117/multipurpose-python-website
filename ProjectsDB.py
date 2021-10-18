@@ -12,3 +12,6 @@ class ProjectsDB:
     def remove_project(self, project_id):
         if project_id in self.projects.keys():
             del self.projects[project_id]
+            return True
+        else:
+            return False
