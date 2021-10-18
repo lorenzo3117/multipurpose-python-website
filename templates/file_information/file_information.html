@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h2>File information viewer</h2>
+    <p>Test file available at the root of the project.</p>
+
+    <div class="d-flex gap-2 flex-wrap">
+        <form action="" method="POST" enctype="multipart/form-data">
+            <div class="d-flex gap-2 flex-wrap">
+                <div>
+                    <input type="file" name="file" class="form-control">
+                </div>
+        
+                <div>
+                    <button type="submit" class="btn btn-primary mb-3">Upload file</button>
+                </div>
+            </div>
+        </form>
+    
+        {% if clear %}
+            <form action="{{ url_for('file_information') }}">
+                <div>
+                    <button type="submit" class="btn btn-danger mb-3">Clear page</button>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+
+    {% if fileInformation %}
+        <br>
+        <h3>File information</h3>
+        <ul>
+            <li>File name: <b>{{ fileInformation.fileName }}</b></li>
+            <li>File type: <b>{{ fileInformation.fileType }}</b></li>
+
+            <br>
+
+            <li>Line count: <b>{{ fileInformation.lineCount }}</b></li>
+            <li>Empty line count: <b>{{ fileInformation.emptyLineCount }}</b></li>
+
+            <br>
+
+            <li>Word count: <b>{{ fileInformation.wordCount }}</b></li>
+            <li>Most used word: <b>{{ fileInformation.mostUsedWord }}</b></li>
+            <li>Word frequency</li>
+            <ul>
+                {% for key, value in fileInformation.wordFrequency.items() %}
+                    <li>{{ key }}: <b>{{ value }}</b></li>
+                {% endfor %}
+            </ul>
+        </ul>
+    {% endif %}
+{% endblock content %}

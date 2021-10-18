@@ -6,21 +6,26 @@ from wtforms.validators import DataRequired, Length, URL, NumberRange
 
 class ProjectForm(FlaskForm):
     name = StringField("Name",
+        render_kw={"placeholder": "Project name"},
         validators=[DataRequired(), Length(min=2, max=32)])
 
     description = StringField("Description",
+        render_kw={"placeholder": "Project description"},
         validators=[DataRequired(), Length(min=2, max=64)])
 
     github_repo = StringField("Github repository URL",
+        render_kw={"placeholder": "Project Github repository URL"},
         validators=[DataRequired(), URL()])
 
     deadline = DateField("Deadline",
+        render_kw={"placeholder": "Project deadline"},
         validators=[DataRequired()])
 
     submit = SubmitField("Add project")
 
 class PasswordForm(FlaskForm):
-    length = IntegerField("Length",
+    length = IntegerField("Password length",
+        render_kw={"placeholder": "Between 1 and 128"},
         widget=NumberInput(min=1, max=128, step=1),
         validators=[DataRequired(), NumberRange(min=1, max=128)])
 
