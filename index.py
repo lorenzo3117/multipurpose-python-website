@@ -57,7 +57,8 @@ def password_generator():
     if form.validate_on_submit():
         print(form.lowerCase.data)
         password = generate_password(form.length.data, form.lowerCase.data, form.upperCase.data, form.numbers.data, form.specials.data)
-        return render_template("password_generator/password_generated.html", password=password)
+        flash(f"Here's your generated password:<br><b>{password}</b>", "success")
+        return render_template("password_generator/password_generator.html", form=PasswordForm())
 
     if form.is_submitted() and not form.validate():
         flash("At least one option has to be checked!", "danger")

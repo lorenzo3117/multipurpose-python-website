@@ -36,7 +36,9 @@
             {% if messages %}  
                 {% for category, message in messages %}  
                     <div class="alert alert-{{ category }}">
-                        {{ message }}
+                        {% autoescape false %}
+                            {{ message }}
+                        {% endautoescape %}
                     </div>
                 {% endfor %}  
             {% endif %}  
