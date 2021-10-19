@@ -28,7 +28,10 @@ def gather_file_information(file):
         # Word count
         file_information["wordCount"] = len(file_information["wordFrequency"].keys())
 
+        # Sort word frequency by value
+        file_information["wordFrequency"] = dict(sorted(file_information["wordFrequency"].items(), key=lambda x: x[1], reverse=True))
+        
         # Most used word
-        file_information["mostUsedWord"] = list(file_information["wordFrequency"].keys())[-1]
+        file_information["mostUsedWord"] = list(file_information["wordFrequency"].keys())[0]
 
     return file_information

@@ -8,7 +8,7 @@
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="d-flex gap-2 flex-wrap">
                 <div>
-                    <input type="file" name="file" class="form-control">
+                    <input type="file" name="file" class="form-control" required>
                 </div>
         
                 <div>
@@ -42,12 +42,33 @@
 
             <li>Word count: <b>{{ fileInformation.wordCount }}</b></li>
             <li>Most used word: <b>{{ fileInformation.mostUsedWord }}</b></li>
-            <li>Word frequency</li>
-            <ul>
-                {% for key, value in fileInformation.wordFrequency.items() %}
-                    <li>{{ key }}: <b>{{ value }}</b></li>
-                {% endfor %}
-            </ul>
         </ul>
+
+        <br>
+        <h3>File content</h3>
+        <div class="overflow-x-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Word</th>
+                        <th>frequency</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    {% if fileInformation.wordFrequency.keys()|length != 0 %}
+                        {% for key, value in fileInformation.wordFrequency.items() %}
+                            <tr>
+                                <td>{{ key }}</td>
+                                <td>{{ value }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="6">Text file is empty</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
     {% endif %}
 {% endblock content %}
