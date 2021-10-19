@@ -1,5 +1,5 @@
 # Multipurpose python website
-Simple website made with flask
+Simple website made with flask to practice my Python
 
 ### Packages needed
 ```
