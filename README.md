@@ -22,6 +22,4 @@ py index.py
 - Add a footer
 
 ### Sources
-https://www.geeksforgeeks.org/visualize-graphs-in-python/
-
 https://www.youtube.com/watch?v=QnDWIZuWYW0&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH
