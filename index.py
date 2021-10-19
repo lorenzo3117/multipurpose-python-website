@@ -11,16 +11,7 @@ from file_information import gather_file_information
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "whyisthisevenneeded"
 
-project1 = Project("3D Computer Graphics", "Implementing a raytracer", "https://github.com/ucll-3dcg-2122/raytracer-de-maboetoe-s", "2021-12-26")
-project2 = Project("Distributed Applications", "Making an auction website in Elixir", "https://github.com/distributed-applications/assignment-jan-lorenzo", "2021-12-08")
-project3 = Project("Mobile Applications", "Making a simple game with Unity", "https://github.com/ucll-ma2021/mobileproject-alt-gr", "2021-12-23")
-project4 = Project("Systeembeheer", "My systeembeheer course", "https://github.com/lorenzo3117/systeembeheer", "2021-12-10")
-
-projectsDB = ProjectsDB()
-projectsDB.add_project(project1)
-projectsDB.add_project(project2)
-projectsDB.add_project(project3)
-projectsDB.add_project(project4)
+PROJECTSDB = ProjectsDB()
 
 # Routes
 @app.route("/")
@@ -29,7 +20,7 @@ def index():
 
 @app.route("/projects")
 def projects():
-    return render_template("projects/projects.html", projects=projectsDB.get_projects())
+    return render_template("projects/projects.html", projects=PROJECTSDB.get_projects())
 
 @app.route("/projects/new", methods=["GET", "POST"])
 def create_project():
@@ -37,7 +28,7 @@ def create_project():
 
     if form.validate_on_submit():
         new_project = Project(form.name.data, form.description.data, form.github_repo.data, form.deadline.data)
-        projectsDB.add_project(new_project)
+        PROJECTSDB.add_project(new_project)
         flash("Your project has successfully been added!", "success")
         return redirect(url_for("projects"))
     
@@ -45,7 +36,7 @@ def create_project():
 
 @app.route("/projects/<int:project_id>/delete", methods=["GET", "POST"])
 def delete_project(project_id):
-    if projectsDB.remove_project(project_id):
+    if PROJECTSDB.remove_project(project_id):
         flash("Your project has successfully been removed!", "success")
     else:
         flash("There has been an error removing your project!", "danger")

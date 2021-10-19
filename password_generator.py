@@ -3,7 +3,7 @@ from random import choice
 LOWERCASE = "abcdefghijklmnopqrstuvwxyz"
 UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 NUMBERS = "0123456789"
-SPECIALS = "€$@%!?<>*"
+SPECIALS = "€$@%!?*/;.-_+="
 
 def generate_password(length, lowerCase, upperCase, numbers, specials):
     characters = ""

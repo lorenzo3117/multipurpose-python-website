@@ -14,7 +14,7 @@ class ProjectForm(FlaskForm):
         validators=[DataRequired(), Length(min=2, max=64)])
 
     github_repo = StringField("Github repository URL",
-        render_kw={"placeholder": "Project Github repository URL"},
+        render_kw={"placeholder": "https://github.com/lorenzo3117/multipurpose-python-website.git"},
         validators=[DataRequired(), URL()])
 
     deadline = DateField("Deadline",

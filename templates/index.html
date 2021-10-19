@@ -2,5 +2,42 @@
 
 {% block content %}
     <h2>Home</h2>
-    <p>Welcome to my simple multipurpose python website made with Flask!</p>
+    <p>Welcome to my simple multipurpose python website made with Flask! Just a small project to practice my Python, enjoy!</p>
+
+    <h4>Functionalities</h4>
+    <p>So far the website has 3 functionalities:</p>
+    <ol>
+        <li><a href="{{ url_for('projects') }}">Projects visualiser</a></li>
+        <ul>
+            <li>A simple table where you can display your current projects.</li>
+        </ul>
+
+        <li><a href="{{ url_for('password_generator') }}">Password generator</a></li>
+        <ul>
+            <li>Lets you generate a customizable password.</li>
+        </ul>
+
+        <li><a href="{{ url_for('file_information') }}">A file information visualiser</a></li>
+        <ul>
+            <li>See all the information of the content of a text file you uploaded.</li>
+        </ul>
+    </ol>
+
+    <h4>Technologies used</h4>
+    <ul>
+        <li>Flask</li>
+        <li>Bootstrap</li>
+    </ul>
+
+    <h4>TODO list</h4>
+    <p>Of course, there's a lot to be improved about this website, here's a little TODO list in no particular order.</p>
+    <ul>
+        <li>Use a real database instead of a DB class</li>
+        <li>Use decorators for generating a password</li>
+        <li>A copy to clipboard button for generated password</li>
+        <li>Add details page for a project</li>
+        <li>Use authentication</li>
+        <li>Make the website a bit prettier</li>
+        <li>Add a footer</li>
+    </ul>
 {% endblock content %}
